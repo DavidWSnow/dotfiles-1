@@ -1,6 +1,7 @@
-# Mathias’s dotfiles
+# David W. Snow's Dotfiles
+These files started life from Mathias’s dotfiles and have been tweaked
+to meet my needs. I keep the originals in ~/Projects/dotfiles/
 
-![Screenshot of my shell prompt](https://i.imgur.com/EkEtphC.png)
 
 ## Installation
 

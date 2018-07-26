@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# git credentials
+export GIT_AUTHOR_NAME="David W. Snow"
+export GIT_AUTHOR_EMAIL="David.Snow@AgingSafely.com"
+
+export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
+git config --global user.name "$GIT_AUTHOR_NAME"
+git config --global user.email "$GIT_AUTHOR_EMAIL"
+

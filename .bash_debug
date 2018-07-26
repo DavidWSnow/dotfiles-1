@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+# sourse this file after 
+export BASH_DEBUG="1";      # for limited debugging or
+# export BASH_DEBUG="2";    # for more complete
+
+# to clear
+# unset BASH_DEBUG
+
+##############################################################################
+# DEBUGGING SHELL FUNCTIONS
+##############################################################################
+
+
+# bash -n scriptname  # don't run commands; check for syntax errors only
+# set -o noexec       # alternative (set option in script)
+
+# bash -v scriptname  # echo commands before running them
+# set -o verbose      # alternative (set option in script)
+
+# bash -x scriptname  # echo commands after command-line processing
+# set -o xtrace       # alternative (set option in script)
+
+if [ -n $BASH_DEBUG ] 
+then 
+    if [ $BASH_DEBUG == "0" ] 
+    then
+        unset BASH_DEBUG 
+        unset PS4
+        
+    elif [ $BASH_DEBUG == "1" ] 
+    then
+        echo "BASH_DEBUG = 1 \n"
+        bash --version
+        echo "\n\n\n"
+        # set -o verbos     # too much output!!!
+        export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
+        
+    elif [ $BASH_DEBUG == "2" ] 
+    then
+        echo "BASH_DEBUG = 2 \n"
+        set -o verbos
+        set -o xtrace
+        
+    fi
+
+    
+fi

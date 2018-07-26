@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
 
@@ -5,6 +7,7 @@ export PATH="$HOME/bin:$PATH";
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
 for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
+	# echo "=================== source $file";  # BASH_DEBUG
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -27,8 +30,10 @@ done;
 
 # Add tab completion for many Bash commands
 if which brew &> /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
+	# echo "=========e /usr/local/share/bash_completion/bash_completion";  # BASH_DEBUG
 	source "$(brew --prefix)/share/bash-completion/bash_completion";
 elif [ -f /etc/bash_completion ]; then
+	# echo "=========e /etc/bash_completion";  # BASH_DEBUG
 	source /etc/bash_completion;
 fi;
 
@@ -46,3 +51,6 @@ complete -W "NSGlobalDomain" defaults;
 
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+
+# VS Code from terminal
+code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
